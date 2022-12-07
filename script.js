@@ -1,3 +1,36 @@
+const numberBtns = document.querySelectorAll(".number");
+const operatorBtns = document.querySelectorAll(".operator");
+const eqBtn = document.querySelector(".equals");
+const resultDisplay = document.getElementById("result");
+const clearBtn = document.querySelector(".clear");
+let displayOperand = 0;
+let currOperator = "";
+let showAnswer = false;
+let clearFlag = false;
+
+numberBtns.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    updateDisplay(btn.textContent);
+  });
+});
+
+operatorBtns.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    displayOperand = parseInt(resultDisplay.value);
+    currOperator = btn.textContent;
+    resultDisplay.value = "";
+  });
+});
+
+eqBtn.addEventListener("click", () => {
+  showAnswer = true;
+  updateDisplay(
+    operate(currOperator, displayOperand, parseInt(resultDisplay.value))
+  );
+});
+
+clearBtn.addEventListener("click", resetCalc);
+
 function add(num1, num2) {
   return num1 + num2;
 }
@@ -29,4 +62,22 @@ function operate(op, num1, num2) {
     default:
       break;
   }
+}
+
+function updateDisplay(val) {
+  if (showAnswer) {
+    resultDisplay.value = val;
+    showAnswer = false;
+    return;
+  }
+
+  resultDisplay.value = resultDisplay.value + val;
+}
+
+function resetCalc() {
+  resultDisplay.value = "";
+  displayOperand = 0;
+  currOperator = "";
+  showAnswer = false;
+  clearFlag = false;
 }
