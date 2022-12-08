@@ -3,6 +3,7 @@ const operatorBtns = document.querySelectorAll(".operator");
 const eqBtn = document.querySelector(".equals");
 const resultDisplay = document.getElementById("result");
 const clearBtn = document.querySelector(".clear");
+
 let operand1 = "";
 let operand2 = "";
 let currOperator = "";
@@ -59,6 +60,7 @@ function evalAndDisplayCurrCalc() {
   updateDisplay(operand1);
 }
 
+// TODO: Prevent numbers from going beyond input's maxlength.
 function updateDisplay(val) {
   if (showAnswer) {
     resultDisplay.value = val;
@@ -99,7 +101,7 @@ function multiply(num1, num2) {
 function divide(num1, num2) {
   if (num2 === 0) return "Cannot divide by Zero.";
 
-  return Math.round((num1 / num2) * 100) / 100;
+  return Math.round((num1 / num2) * 1000) / 1000;
 }
 
 function operate(op, num1, num2) {

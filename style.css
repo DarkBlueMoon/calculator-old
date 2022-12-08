@@ -1,8 +1,23 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 #calcContainer {
-  max-width: 480px;
+  max-width: 240px;
+  margin: 0 auto;
+}
+
+#calcContainer input {
+  width: 100%;
+  /* margin: 1rem 0; */
+  padding: 1rem 0;
 }
 
 .calcInputs {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  gap: 2px;
+  /* justify-content: center; */
 }
